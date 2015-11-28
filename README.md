@@ -1,28 +1,35 @@
+# Angular Trello API Client
+
+A angular Trello Client bypassing the Trello client.js (based on jQuery).
+This Client use [Satellizer](https://github.com/sahat/satellizer) for authentication.
+
+## Get Started
+
+```javascript
 angular.module('demo', [
   'ng',
+  'satellizer',
   'angular-trello-api-client',
-  'satellizer'
 ])
 
 .config(function(TrelloClientProvider){
   TrelloClientProvider.init({
-    key: '2dcb2ba290c521d2b5c2fd69cc06830e',
-    appName: 'Not So Shitty',
+    key: 'trello app key',
+    appName: 'Your app name displayed in authentication popup',
     tokenExpiration: 'never',
     scope: ['read', 'write', 'account'],
   });
 })
 
 .controller('demoCtrl', function($scope, TrelloClient){
-  $scope.popupOptions = {
-    type: 'popup'
-  }
+
   $scope.authenticate = TrelloClient.authenticate
-  $scope.getBoards = function(){
+
+  $scope.getMyBoards = function(){
     TrelloClient.get('/members/me/boards').then(function(response){
       console.log(response);
-    }).catch(function(error){
-      console.log(error);
     });
   };
 });
+
+[Trello API Doc](https://developers.trello.com/advanced-reference)

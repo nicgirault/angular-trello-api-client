@@ -19,6 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "angularjs#~1.4.8"
+    "angular": "angularjs#~1.4.8",
+    "satellizer": "~0.13.1"
   }
 }
