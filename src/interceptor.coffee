@@ -7,8 +7,8 @@ angular.module 'angular-trello-api-client'
   'TrelloClientConfig'
   ($q, config, storage, shared, TrelloClientConfig) ->
     request: (request) ->
-      if request.skipAuthorization
-        return request
+      return request unless request.trelloRequest
+
       if shared.isAuthenticated()
         tokenName = if config.tokenPrefix then config.tokenPrefix + '_' + config.tokenName else config.tokenName
         token = storage.get tokenName

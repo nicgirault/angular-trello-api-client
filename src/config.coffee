@@ -7,6 +7,6 @@ angular.module 'angular-trello-api-client'
   intentEndpoint: 'https://trello.com'
   version: 1
   tokenExpiration: 'never'
-  scope: ['read', 'write']
+  scope: ['read', 'write', 'account']
   localStoragePrefix: 'trello'
 }

@@ -8,7 +8,7 @@ angular.module('angular-trello-api-client').constant('TrelloClientConfig', {
   intentEndpoint: 'https://trello.com',
   version: 1,
   tokenExpiration: 'never',
-  scope: ['read', 'write'],
+  scope: ['read', 'write', 'account'],
   localStoragePrefix: 'trello'
 });
 
@@ -17,7 +17,7 @@ angular.module('angular-trello-api-client').factory('TrelloInterceptor', [
     return {
       request: function(request) {
         var token, tokenName;
-        if (request.skipAuthorization) {
+        if (!request.trelloRequest) {
           return request;
         }
         if (shared.isAuthenticated()) {
@@ -80,6 +80,10 @@ angular.module('angular-trello-api-client').provider('TrelloClient', function($a
     ref = ['get', 'post', 'put', 'delete'];
     fn = function(method) {
       return TrelloClient[method] = function(endpoint, config) {
+        if (config == null) {
+          config = {};
+        }
+        config.trelloRequest = true;
         if (!$auth.isAuthenticated()) {
           return;
         }

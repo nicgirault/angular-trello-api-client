@@ -31,6 +31,8 @@ angular.module 'angular-trello-api-client'
     for method in ['get', 'post', 'put', 'delete']
       do (method) ->
         TrelloClient[method] = (endpoint, config) ->
+          config ?= {}
+          config.trelloRequest = true # for interceptor
           return unless $auth.isAuthenticated()
           $http[method] baseURL + endpoint, config
 
