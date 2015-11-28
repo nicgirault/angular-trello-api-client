@@ -1,0 +1,16 @@
+<html ng-app="demo">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+    <script src="https://rawgit.com/amercier/promise-window/master/dist/promise-window.js"></script>
+    <script src="../dist/angular-trello-api-client.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="demoCtrl">
+    <button ng-click="authenticatePopup(popupOptions)">
+      Trello authentication with popup
+    </button>
+    <button ng-click="authenticateRedirect()">
+      Trello authentication with redirection
+    </button>
+  </body>
+</html>
