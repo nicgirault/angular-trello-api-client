@@ -1,14 +1,18 @@
 {
   "name": "angular-trello-api-client",
   "homepage": "https://github.com/nicgirault/angular-trello-api-client",
+  "version": "1.0.0",
   "authors": [
     "nicgirault <nic.girault@gmail.com>"
   ],
-  "description": "A stand alone angular client API bypassing the client.js file provided by Trello (no jQuery dependency)",
+  "description": "An angular client API for Trello bypassing the client.js file provided by Trello (no jQuery dependency)",
   "main": "dist/angular-trello-api-client.min.js",
   "moduleType": [],
   "keywords": [
-    "trello"
+    "trello",
+    "api",
+    "client",
+    "satellizer"
   ],
   "license": "MIT",
   "ignore": [
