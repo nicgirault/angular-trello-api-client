@@ -1,4 +1,4 @@
-angular.module 'angular-trello-api-client'
+angular.module 'trello-api-client'
 .factory 'TrelloInterceptor', [
   '$q'
   'SatellizerConfig'

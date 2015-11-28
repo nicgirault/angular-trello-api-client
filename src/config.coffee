@@ -1,4 +1,4 @@
-angular.module 'angular-trello-api-client'
+angular.module 'trello-api-client'
 .constant 'TrelloClientConfig', {
   key: null
   appName: null

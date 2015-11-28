@@ -1,4 +1,4 @@
-angular.module 'angular-trello-api-client'
+angular.module 'trello-api-client'
 .provider 'TrelloClient', ($authProvider, TrelloClientConfig) ->
   @init = (config) ->
     return unless config?

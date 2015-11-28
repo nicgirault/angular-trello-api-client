@@ -1,1 +1,1 @@
-angular.module 'angular-trello-api-client', ['satellizer']
+angular.module 'trello-api-client', ['satellizer']

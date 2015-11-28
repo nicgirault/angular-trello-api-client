@@ -1,6 +1,6 @@
-angular.module('angular-trello-api-client', ['satellizer']);
+angular.module('trello-api-client', ['satellizer']);
 
-angular.module('angular-trello-api-client').constant('TrelloClientConfig', {
+angular.module('trello-api-client').constant('TrelloClientConfig', {
   key: null,
   appName: null,
   authEndpoint: 'https://trello.com',
@@ -12,7 +12,7 @@ angular.module('angular-trello-api-client').constant('TrelloClientConfig', {
   localStoragePrefix: 'trello'
 });
 
-angular.module('angular-trello-api-client').factory('TrelloInterceptor', [
+angular.module('trello-api-client').factory('TrelloInterceptor', [
   '$q', 'SatellizerConfig', 'SatellizerStorage', 'SatellizerShared', 'TrelloClientConfig', function($q, config, storage, shared, TrelloClientConfig) {
     return {
       request: function(request) {
@@ -42,7 +42,7 @@ angular.module('angular-trello-api-client').factory('TrelloInterceptor', [
   }
 ]);
 
-angular.module('angular-trello-api-client').provider('TrelloClient', function($authProvider, TrelloClientConfig) {
+angular.module('trello-api-client').provider('TrelloClient', function($authProvider, TrelloClientConfig) {
   this.init = function(config) {
     if (config == null) {
       return;
