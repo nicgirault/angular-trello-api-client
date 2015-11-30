@@ -5,7 +5,14 @@ This Client use [Satellizer](https://github.com/sahat/satellizer) for authentica
 
 You don't know [Trello](trello.com)? Youhou, this is the day your life changed!
 
-## Get Started
+## Installation
+
+```bash
+# Bower
+bower install angular-trello-api-client
+```
+
+## Usage
 
 ```javascript
 angular.module('demo', [
