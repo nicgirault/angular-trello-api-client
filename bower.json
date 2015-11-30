@@ -1,5 +1,6 @@
 {
   "name": "angular-trello-api-client",
+  "main": "dist/angular-trello-api-client.js",
   "homepage": "https://github.com/nicgirault/angular-trello-api-client",
   "version": "1.0.4",
   "authors": [
