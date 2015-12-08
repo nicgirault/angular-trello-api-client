@@ -74,7 +74,8 @@ angular.module('trello-api-client').provider('TrelloClient', function($authProvi
     TrelloClient = {};
     TrelloClient.authenticate = function() {
       return $auth.authenticate(TrelloClientConfig.appName).then(function(response) {
-        return $auth.setToken(response.token);
+        $auth.setToken(response.token);
+        return response;
       });
     };
     ref = ['get', 'post', 'put', 'delete'];
