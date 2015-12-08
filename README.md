@@ -18,7 +18,7 @@ bower install angular-trello-api-client
 angular.module('demo', [
   'ng',
   'satellizer',
-  'angular-trello-api-client',
+  'trello-api-client',
 ])
 
 .config(function(TrelloClientProvider){
