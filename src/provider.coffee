@@ -28,6 +28,7 @@ angular.module 'trello-api-client'
     TrelloClient.authenticate = ->
       $auth.authenticate(TrelloClientConfig.appName).then (response)->
         $auth.setToken response.token
+        return response
     for method in ['get', 'post', 'put', 'delete']
       do (method) ->
         TrelloClient[method] = (endpoint, config) ->
