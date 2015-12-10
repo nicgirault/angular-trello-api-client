@@ -12,17 +12,10 @@ gulp.task('build', function() {
   ])
     .pipe(coffee({bare: true}))
     .pipe(concat('angular-trello-api-client.js'))
+    .pipe(minify())
     .pipe(gulp.dest('./dist'))
 });
 
 gulp.task('watch', ['build'], function () {
   gulp.watch('./src/*.coffee', ['build']);
-});
-
-gulp.task('release', ['build'], function() {
-  gulp.src('dist/*.js')
-    .pipe(minify({
-        ignoreFiles: ['.min.js']
-    }))
-    .pipe(gulp.dest('dist'))
 });

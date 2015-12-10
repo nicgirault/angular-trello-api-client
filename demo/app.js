@@ -1,6 +1,6 @@
 angular.module('demo', [
   'ng',
-  'angular-trello-api-client',
+  'trello-api-client',
   'satellizer'
 ])
 
@@ -22,7 +22,7 @@ angular.module('demo', [
     TrelloClient.get('/members/me/boards').then(function(response){
       console.log(response);
     }).catch(function(error){
-      console.log(error);
+      console.warn(error);
     });
   };
 });

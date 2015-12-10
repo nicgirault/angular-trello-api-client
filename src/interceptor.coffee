@@ -1,17 +1,14 @@
 angular.module 'trello-api-client'
 .factory 'TrelloInterceptor', [
   '$q'
-  'SatellizerConfig'
-  'SatellizerStorage'
   'SatellizerShared'
   'TrelloClientConfig'
-  ($q, config, storage, shared, TrelloClientConfig) ->
+  ($q, shared, TrelloClientConfig) ->
     request: (request) ->
       return request unless request.trelloRequest
 
-      if shared.isAuthenticated()
-        tokenName = if config.tokenPrefix then config.tokenPrefix + '_' + config.tokenName else config.tokenName
-        token = storage.get tokenName
+      token = localStorage.getItem TrelloClientConfig.localStorageTokenName
+      if token?
         request.params ?= {}
         request.params.key = TrelloClientConfig.key
         request.params.token = token

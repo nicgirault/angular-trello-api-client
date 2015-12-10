@@ -4,7 +4,6 @@ angular.module 'trello-api-client'
     return unless config?
     angular.extend TrelloClientConfig, config
 
-    $authProvider.tokenPrefix = TrelloClientConfig.localStoragePrefix
     $authProvider.httpInterceptor = (request) -> false
     $authProvider.oauth2 {
       name: TrelloClientConfig.appName
@@ -22,20 +21,28 @@ angular.module 'trello-api-client'
       expiration: TrelloClientConfig.tokenExpiration
     }
 
-  @$get = ($location, $http, $window, $auth) ->
+  @$get = ($location, $http, $window, $auth, $q) ->
     baseURL = "#{ TrelloClientConfig.apiEndpoint }/#{ TrelloClientConfig.version }"
     TrelloClient = {}
     TrelloClient.authenticate = ->
       $auth.authenticate(TrelloClientConfig.appName).then (response)->
-        $auth.setToken response.token
+        localStorage.setItem TrelloClientConfig.localStorageTokenName, response.token
         return response
     for method in ['get', 'post', 'put', 'delete']
       do (method) ->
         TrelloClient[method] = (endpoint, config) ->
           config ?= {}
           config.trelloRequest = true # for interceptor
-          return unless $auth.isAuthenticated()
-          $http[method] baseURL + endpoint, config
+          deferred = $q.defer()
+          # unless localStorage.getItem(TrelloClientConfig.localStorageTokenName)?
+          if not localStorage.getItem(TrelloClientConfig.localStorageTokenName)?
+            deferred.reject 'Not authenticated'
+          else
+            $http[method] baseURL + endpoint, config
+            .then (response) ->
+              deferred.resolve response
+
+          deferred.promise
 
     return TrelloClient
   return
