@@ -9,4 +9,5 @@ angular.module 'trello-api-client'
   tokenExpiration: 'never'
   scope: ['read', 'write', 'account']
   localStorageTokenName: 'trello_token'
+  returnUrl: window.location.origin
 }

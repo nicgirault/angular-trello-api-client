@@ -8,7 +8,7 @@ angular.module 'trello-api-client'
     $authProvider.oauth2 {
       name: TrelloClientConfig.appName
       key: TrelloClientConfig.key
-      returnUrl: window.location.origin
+      returnUrl: TrelloClientConfig.returnUrl
       authorizationEndpoint: "#{ TrelloClientConfig.authEndpoint }/#{ TrelloClientConfig.version }/authorize"
       defaultUrlParams: ['response_type', 'key', 'return_url', 'expiration', 'scope', 'name']
       requiredUrlParams: null
