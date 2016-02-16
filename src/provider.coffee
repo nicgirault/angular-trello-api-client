@@ -41,6 +41,7 @@ angular.module 'trello-api-client'
             $http[method] baseURL + endpoint, config
             .then (response) ->
               deferred.resolve response
+            .catch deferred.reject
 
           deferred.promise
 

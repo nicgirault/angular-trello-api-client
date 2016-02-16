@@ -91,7 +91,7 @@ angular.module('trello-api-client').provider('TrelloClient', function($authProvi
         } else {
           $http[method](baseURL + endpoint, config).then(function(response) {
             return deferred.resolve(response);
-          });
+          })["catch"](deferred.reject);
         }
         return deferred.promise;
       };
